@@ -5,7 +5,6 @@ from .models import Memes
 class MemeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Memes
-        fields = ['id', 'title', 'url', 'upvotes', 'downvotes']
+        fields = '__all__'
         read_only_fields = ['upvotes', 'downvotes']
 
-        
