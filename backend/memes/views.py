@@ -27,7 +27,6 @@ def vote_memes(request, pk, action):
     except Memes.DoesNotExist:
         return Response({'error': 'Meme Not Found'}, status= status.HTTP_404_NOT_FOUND)
     
-    # For demo purposes, use a default user (in production, use authentication)
     user, created = User.objects.get_or_create(username='default_user')
     
     if action == 'upvote':
@@ -37,7 +36,6 @@ def vote_memes(request, pk, action):
     else:
         return Response({'error':'Invalid Action'}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Create or update vote
     vote, created = Vote.objects.get_or_create(
         user=user,
         meme=meme,
